@@ -1,28 +1,9 @@
-// -----------------------------------------------------------
-// |                                                          |
-// |  ____              _                                     |
-// | | ___|_ __ ___ __ | | ___  _   _  ___  ___               |
-// | | _| | '_`_\| '_ \| |/ _ \| | | |/ _ \/ _ \              |
-// | | |__| | || | |_) | | (_) | |_| |  __/  __/              |
-// | |____|_|_||_| .__/|_|\___/ \_,| |\___|\___/              |
-// |             |_|            |___/                         |
-// |                                                          |
-// |  __  __                                                  |
-// | |  \/  | __ _ _ __   __ _  __ _  ___ _ __                |
-// | | |\/| |/_ ` | '_ \ /  ` |/  ` |/ _ \ '__|               |
-// | | |  | | (_| | | | | (_| | (_| |  __/ |                  |
-// | |_|  |_|\__,_|_| | |\__,_|\__, |\___|_|                  |
-// |                           |___/                          |
-// |                                                          |
-// `__________________________________________________________,
-
-
-// Dependencies
+// Requiring mysql, inquirer and console.table 
 const mysql = require("mysql");
 const inquirer = require("inquirer");
 const consoleTable = require("console.table");
 
-// Connection Set up
+// Setup the mySQL connection
 const connection = mysql.createConnection({
     host: "localhost",
     port: 3306,
@@ -31,6 +12,7 @@ const connection = mysql.createConnection({
     database: "employee_db"
 });
 
+// Begin by throwing errors in connections
 connection.connect(function (err) {
     if (err) throw err;
     console.log("Connected as ID " + connection.threadId);
@@ -38,6 +20,7 @@ connection.connect(function (err) {
     startPrompting();
 });
 
+// Initial prompts 
 function startPrompting() {
     inquirer.prompt({
         name: "action",
@@ -93,7 +76,6 @@ function startPrompting() {
         }
     });
 }
-
 
 // Functions for Adding Dept, Role, Employee 
 function addDepartment() {
@@ -168,7 +150,7 @@ function addEmployee() {
     });
 }
 
-// Functions for Viewing Dept, Role, Employee
+// Dept, Role, Employee functions for viewing
 function viewDepartments() {
     connection.query("SELECT * FROM department", function (err, res) {
         if (err) throw err;
@@ -193,7 +175,7 @@ function viewEmployees() {
     });
 }
 
-// Function for Updating Employee Role
+// Dept, Role, Employee functions for updating
 function updateEmployeeRole() {
     inquirer.prompt([{
         type: "input",
@@ -215,7 +197,7 @@ function updateEmployeeRole() {
     });
 }
 
-// Functions for Deleting Dept, Role, Employee
+// Dept, Role, Employee functions for deleting
 function deleteDepartment() {
     inquirer.prompt({
     type: "input",
@@ -259,7 +241,7 @@ function deleteEmployee() {
 }
 
 
-// Function to Exit App
+// Using an "EXIT" option
 function exit() {
     connection.end();
     process.exit();

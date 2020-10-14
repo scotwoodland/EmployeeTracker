@@ -1,7 +1,7 @@
 {
   "name": "employee-tracker",
   "version": "1.0.0",
-  "description": "Company Employee management app",
+  "description": "Company Employee Management Application",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -9,12 +9,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/scotwoodland/EmployeeTracker.git"
+    "url": "https://github.com/scotwoodland/EmployeeTracker"
   },
   "author": "Scot Woodland",
   "license": "ISC",
   "homepage": "https://github.com/scotwoodland/EmployeeTracker",
   "dependencies": {
+    "chalk": "^4.1.0",
     "console.table": "^0.10.0",
     "inquirer": "^7.3.3",
     "mysql": "^2.18.1"

@@ -16,12 +16,14 @@ const connection = mysql.createConnection({
 connection.connect(function (err) {
     if (err) throw err;
     console.log("Connected as ID " + connection.threadId);
-
-    startPrompting();
+    showList();
 });
 
+console.log("----------------------------------------------------");
+console.log("WELCOME TO THE DISNEY EMPLOYEE TRACKER!");
+console.log("----------------------------------------------------");
 // Initial prompts 
-function startPrompting() {
+function showList() {
     inquirer.prompt({
         name: "action",
         type: "list",
@@ -86,9 +88,10 @@ function addDepartment() {
     }).then(function (answer) {
         connection.query("INSERT INTO department (name) VALUES (?)", [answer.deptName], function (err, res) {
             if (err) throw err;
-            console.table(res)
+            console.log("--------------------------------------------------");
             console.log("Successfully added Department!");
-            startPrompting();
+            console.log("--------------------------------------------------");
+            viewDepartments();
         })
     });
 }
@@ -112,9 +115,10 @@ function addRole() {
     ]).then(function (answer) {
         connection.query("INSERT INTO role (title, salary, department_id) VALUES (?,?,?)", [answer.roleName, answer.annualSalary, answer.deptID], function (err, res) {
             if (err) throw err;
-            console.table(res);
+            console.log("--------------------------------------------------");
             console.log("Successfully added Role!");
-            startPrompting();
+            console.log("--------------------------------------------------");
+            viewRoles();
         });
     });
 }
@@ -143,9 +147,10 @@ function addEmployee() {
     ]).then(function (answer) {
         connection.query("INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES (?, ?, ?, ?)", [answer.firstName, answer.lastName, answer.roleID, answer.managerID], function (err, res) {
             if (err) throw err;
-            console.table(res);
+            console.log("--------------------------------------------------");
             console.log("Successfully added New Employee!");
-            startPrompting();
+            console.log("--------------------------------------------------");
+            viewEmployees();
         });
     });
 }
@@ -154,24 +159,36 @@ function addEmployee() {
 function viewDepartments() {
     connection.query("SELECT * FROM department", function (err, res) {
         if (err) throw err;
+        console.clear();
+        console.log("--------------------------------------------------");
+        console.log("Now viewing the Departments");
+        console.log("--------------------------------------------------");
         console.table(res);
-        startPrompting();
+        showList();
     });
 }
 
 function viewRoles() {
     connection.query("SELECT * FROM role", function (err, res) {
         if (err) throw err;
+        console.clear();
+        console.log("--------------------------------------------------");
+        console.log("Now viewing Roles");
+        console.log("--------------------------------------------------");
         console.table(res);
-        startPrompting();
+        showList();
     });
 }
 
 function viewEmployees() {
     connection.query("SELECT * FROM employee", function (err, res) {
         if (err) throw err;
+        console.clear();
+        console.log("--------------------------------------------------");
+        console.log("Now viewing the Employees");
+        console.log("--------------------------------------------------");
         console.table(res);
-        startPrompting();
+        showList();
     });
 }
 
@@ -190,9 +207,10 @@ function updateEmployeeRole() {
     ]).then(function (answer) {
         connection.query("UPDATE employee SET role_id=? WHERE first_name=?", [answer.updateRole, answer.employeeUpdate], function (err, res) {
             if (err) throw err;
-            console.table(res);
-            console.log("Successfully updated Employee Role!");
-            startPrompting();
+            console.log("--------------------------------------------------");
+            console.log("Successfully updated the Employee Role!");
+            console.log("--------------------------------------------------");
+            viewEmployees();
         });
     });
 }
@@ -206,8 +224,10 @@ function deleteDepartment() {
 }).then(function (answer) {
     connection.query("DELETE FROM department WHERE name=?", [answer.deptName], function (err, res) {
         if (err) throw err;
-        console.log("Successfully Deleted Department!");
-        startPrompting();
+        console.log("--------------------------------------------------");
+        console.log("Successfully deleted the Department!");
+        console.log("--------------------------------------------------");
+        viewDepartments();
     });
 });
 }
@@ -220,8 +240,10 @@ function deleteRole() {
 }).then(function (answer) {
     connection.query("DELETE FROM role WHERE title=?", [answer.roleTitle], function (err, res) {
         if (err) throw err;
-        console.log("Successfully Deleted Role!");
-        startPrompting();
+        console.log("--------------------------------------------------");
+        console.log("Successfully deleted the Role!");
+        console.log("--------------------------------------------------");
+        viewRoles();
     });
 });
 }
@@ -234,8 +256,10 @@ function deleteEmployee() {
 }).then(function (answer) {
     connection.query("DELETE FROM employee WHERE id =?", [answer.employeeID], function (err, res) {
         if (err) throw err;
-        console.log("Successfully Deleted Employee!");
-        startPrompting();
+        console.log("--------------------------------------------------");
+        console.log("Successfully deleted the Employee!");
+        console.log("--------------------------------------------------");
+        viewEmployees();
     });
 });
 }

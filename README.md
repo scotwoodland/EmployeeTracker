@@ -8,8 +8,14 @@ This is an application that runs using Node to the command of server.js.
 ## Screenshot
 
 ![Image](/screenshot.JPG)
-<hr>
 
+
+## Recordings
+
+![Image](/Viewing Options.gif)
+![Image](/Adding Options.gif)
+![Image](/Updating and Deleting Options.gif)
+<hr>
 
 ## Description
 
@@ -21,4 +27,4 @@ The application allows for users to view, add, update, and delete employees, rol
 
 ## Link to Deployed Application
 
-<a href="https://the-notetaking-master.herokuapp.com/"> Link to Deployed Application on Heroku!</a>
+<a href="https://github.com/scotwoodland/EmployeeTracker"> Link to Deployed Application on Github!</a>

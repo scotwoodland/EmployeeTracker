@@ -12,11 +12,11 @@ This is an application that runs using Node to the command of server.js.
 
 ## Recordings
 
-![](Viewing Options.gif)
+![Viewing Options](Viewing%20Options.gif)
 <br>
-![](Adding Options.gif)
+![Adding Options](Adding%20Options.gif)
 <br>
-![](Updating and Deleting Options.gif)
+![Updating and Deleting Options](Updating%20and%20Deleting%20Options.gif)
 <hr>
 
 ## Description

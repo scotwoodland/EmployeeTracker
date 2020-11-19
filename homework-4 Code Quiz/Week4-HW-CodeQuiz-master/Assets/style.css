@@ -1,0 +1,58 @@
+#startPage{
+text-align: center;
+}
+
+a{
+    color: black;
+    font: 800;
+}
+
+a:hover{
+    color: black;
+    font: 800;
+}
+
+#startQuiz{
+    background-color: black;
+    color: whitesmoke;
+    width: 50%;
+}
+
+#startQuiz:hover{
+    background-color:black;
+
+}
+
+h3{
+    font-size: xx-large;
+}
+
+#names{
+    font-size: xx-large;
+    text-align: left;
+    color: black;
+    font-weight: bold;
+}
+
+#highscores{
+    font-size: xx-large;
+    text-align: center;
+    color: black;
+    font-weight: bold;
+}
+#scores{
+    font-size: xx-large;
+    text-align: center;
+    color: black;
+    font-weight: bold;
+}
+
+#titleRight{
+    float: right;
+  }
+
+#img1{
+    float: inherit;
+    height: 250px;
+    width: auto;
+}
